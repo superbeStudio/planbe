@@ -1,5 +1,8 @@
 "use client";
 import { useState } from "react";
+import { Layout } from "../Common/Layout";
+import Paragraph from "../Common/Paragraph";
+import { LightBulbIcon } from "@heroicons/react/20/solid";
 
 export default function Content({
   children,
@@ -13,19 +16,21 @@ export default function Content({
   };
 
   return (
-    <div className={`${isDarkMode ? "dark" : ""}`}>
-      <div className="dark:bg-slate-800 dark:text-slate-100">
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            padding: "4px 8px",
-          }}
-        >
-          <button onClick={handleDarkMode}>useDark</button>
-        </div>
-        {children}
+    <Layout isDarkMode={isDarkMode}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          alignItems: "center",
+          padding: "8px 16px",
+        }}
+      >
+        <LightBulbIcon
+          onClick={handleDarkMode}
+          className={`h-6 w-6 ${isDarkMode ? "text-blue-50" : "text-black"}`}
+        />
       </div>
-    </div>
+      {children}
+    </Layout>
   );
 }
