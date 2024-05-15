@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { SuperbeUrl, URL_MAP, URL_MAP_NAME } from "@/app/lib/constant/url";
+import { SuperbeUrl, URL_MAP, URL_MAP_NAME } from "@/app/_lib/constant/url";
 import { useRouter } from "next/navigation";
 import React from "react";
 
