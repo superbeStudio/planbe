@@ -2,11 +2,6 @@ import { Box, Button, Card, CardContent, Fab } from "@mui/material";
 import Chart from "./_chart";
 import GoalItem from "./_list";
 
-export const getUser = async () => {
-  const res = await fetch("https://planbe-backend.p-e.kr/api/user/1");
-  return res.json();
-};
-
 export default function Goal() {
   return (
     <Box

@@ -28,10 +28,6 @@ const registerFormSchema = z.object({
 });
 
 type RegisterForm = z.infer<typeof registerFormSchema>;
-export const getUser = async () => {
-  const res = await fetch("https://planbe-backend.p-e.kr/api/user/1");
-  return res.json();
-};
 
 export default function Page() {
   const router = useRouter();
