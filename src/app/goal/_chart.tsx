@@ -2,7 +2,7 @@
 
 import { Pie, PieChart, ResponsiveContainer } from "recharts";
 
-export default async function Chart() {
+export default function Chart() {
   return (
     <PieChart width={200} height={160}>
       <Pie
