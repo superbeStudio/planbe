@@ -21,7 +21,7 @@ export default function Navigator() {
         }}
       >
         {Object.entries(URL_MAP_NAME).map(([url, { name, icon }]) => (
-          <BottomNavigationAction label={name} icon={icon} />
+          <BottomNavigationAction label={name} icon={icon} key={name} />
         ))}
       </BottomNavigation>
     </Paper>
