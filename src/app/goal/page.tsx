@@ -1,16 +1,124 @@
+import { Box, Button, Card, CardContent, Fab } from "@mui/material";
+import Chart from "./_chart";
+import GoalItem from "./_list";
+
 export const getUser = async () => {
   const res = await fetch("https://planbe-backend.p-e.kr/api/user/1");
   return res.json();
 };
 
-export default async function Goal() {
-  const res = await getUser();
-
+export default function Goal() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        Goal
-      </div>
-    </main>
+    <Box
+      display="flex"
+      alignItems="center"
+      flexDirection="column"
+      padding={2}
+      gap={2}
+    >
+      <Box
+        display="flex"
+        alignItems="center"
+        flexDirection="row"
+        gap={2}
+        width="100%"
+        flex={1}
+      >
+        <Card sx={{ display: "flex", flex: 1 }}>
+          <CardContent
+            sx={{
+              alignItems: "center",
+              display: "flex",
+              justifyContent: "center",
+              flex: 1,
+            }}
+          >
+            <Chart />
+          </CardContent>
+        </Card>
+        <Card sx={{ display: "flex", flex: 1 }}>
+          <CardContent
+            sx={{
+              alignItems: "center",
+              display: "flex",
+              justifyContent: "center",
+              flex: 1,
+            }}
+          >
+            <Chart />
+          </CardContent>
+        </Card>
+      </Box>
+      <Box display="flex" width="100%" justifyContent="flex-end">
+        <Button>목표 생성</Button>
+      </Box>
+      <Box
+        display="flex"
+        alignItems="center"
+        gap={2}
+        width="100%"
+        flex={1}
+        flexDirection="column"
+      >
+        <GoalItem />
+        <GoalItem />
+        <GoalItem />
+        <GoalItem />
+        <GoalItem />
+        <GoalItem />
+      </Box>
+    </Box>
   );
 }
+const data01 = [
+  {
+    name: "Group A",
+    value: 400,
+  },
+  {
+    name: "Group B",
+    value: 300,
+  },
+  {
+    name: "Group C",
+    value: 300,
+  },
+  {
+    name: "Group D",
+    value: 200,
+  },
+  {
+    name: "Group E",
+    value: 278,
+  },
+  {
+    name: "Group F",
+    value: 189,
+  },
+];
+const data02 = [
+  {
+    name: "Group A",
+    value: 2400,
+  },
+  {
+    name: "Group B",
+    value: 4567,
+  },
+  {
+    name: "Group C",
+    value: 1398,
+  },
+  {
+    name: "Group D",
+    value: 9800,
+  },
+  {
+    name: "Group E",
+    value: 3908,
+  },
+  {
+    name: "Group F",
+    value: 4800,
+  },
+];

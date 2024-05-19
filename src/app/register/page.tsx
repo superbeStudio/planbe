@@ -2,6 +2,7 @@
 
 import React from "react";
 import { z } from "zod";
+import { useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Gender, SystemCurrency, SystemColor } from "@/app/_lib/types/user.d";
@@ -33,6 +34,8 @@ export const getUser = async () => {
 };
 
 export default function Page() {
+  const router = useRouter();
+
   const {
     control,
     register,
@@ -57,9 +60,8 @@ export default function Page() {
         Accept: "application/json",
       },
       body: JSON.stringify(values),
-    }).then((res) => {
-      console.log(res);
-      res.json();
+    }).then(() => {
+      router.push("/login");
     });
   };
 

@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import Navigator from "./components/Navigator";
 import Content from "./components/Content";
 
-const inter = Inter({ subsets: ["latin"] });
+const notoSans = Noto_Sans_KR({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,7 +24,7 @@ export default function RootLayout({
       <head>
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className={inter.className}>
+      <body className={notoSans.className}>
         <Content>{children}</Content>
         <Navigator />
       </body>
