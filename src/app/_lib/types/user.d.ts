@@ -12,8 +12,8 @@
 };
 
 export enum Gender {
-  "F" = "FEMALE",
-  "M" = "MALE",
+  "F" = "F",
+  "M" = "M",
 }
 
 export enum SystemColor {
