@@ -7,12 +7,20 @@ import {
 
 export type SuperbeUrl = "GOAL" | "STATISTICS" | "SETTINGS";
 
+export type SettingsDetail = "CATEGORY" | "MONEY" | "SCREEN";
+
 export const URL_MAP_LIST: SuperbeUrl[] = ["GOAL", "STATISTICS", "SETTINGS"];
 
 export const URL_MAP: Record<SuperbeUrl, string> = {
   GOAL: "goal",
   STATISTICS: "statistics",
   SETTINGS: "settings",
+};
+
+export const SETTINGS_DETAIL: Record<SettingsDetail, string> = {
+  CATEGORY: "category",
+  MONEY: "money",
+  SCREEN: "screen",
 };
 
 export const URL_MAP_NAME: Record<
