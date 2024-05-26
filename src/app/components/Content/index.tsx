@@ -1,4 +1,5 @@
 "use client";
+import { Box } from "@mui/material";
 import { useState } from "react";
 
 export default function Content({
@@ -13,9 +14,22 @@ export default function Content({
   };
 
   return (
-    <div className={`${isDarkMode ? "dark" : ""}`}>
-      <div className="dark:bg-slate-800 dark:text-slate-100">
-        <div
+    <Box
+      className={`${isDarkMode ? "dark" : ""}`}
+      display="flex"
+      flex={1}
+      minHeight="100%"
+      width="100%"
+    >
+      <Box
+        className="dark:bg-slate-800 dark:text-slate-100"
+        display="flex"
+        flex={1}
+        minHeight="100%"
+        width="100%"
+        flexDirection="column"
+      >
+        <Box
           style={{
             display: "flex",
             justifyContent: "flex-end",
@@ -23,9 +37,9 @@ export default function Content({
           }}
         >
           <button onClick={handleDarkMode}>useDark</button>
-        </div>
+        </Box>
         {children}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }

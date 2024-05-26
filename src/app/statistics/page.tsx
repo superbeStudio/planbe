@@ -1,9 +1,16 @@
-export default function Statistics() {
+import { Box } from "@mui/material";
+import Result from "./(result)/result";
+
+export default function Statistics({
+  params,
+  searchParams,
+}: {
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        Statistics
-      </div>
-    </main>
+    <Box>
+      <Result />
+    </Box>
   );
 }

@@ -1,11 +1,15 @@
 ﻿"use client";
 
-import { Pie, PieChart, ResponsiveContainer } from "recharts";
+import {
+  Pie,
+  PieChart as RechartsPieChart,
+  ResponsiveContainer,
+} from "recharts";
 
-export default function Chart() {
+export default function PieChart() {
   return (
     <ResponsiveContainer width="100%" height={160}>
-      <PieChart>
+      <RechartsPieChart>
         <Pie
           data={data01}
           cx="50%"
@@ -16,7 +20,7 @@ export default function Chart() {
           renderingIntent={"test"}
           dataKey="value"
         />
-      </PieChart>
+      </RechartsPieChart>
     </ResponsiveContainer>
   );
 }
