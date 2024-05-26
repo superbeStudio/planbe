@@ -10,6 +10,16 @@ const settings = {
   pwa: {
     dest: "public",
   },
+  async redirects() {
+    return [
+      // Basic redirect
+      {
+        source: "/statistics",
+        destination: "/statistics/result",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports =

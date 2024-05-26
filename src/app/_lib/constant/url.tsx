@@ -5,16 +5,16 @@ import {
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
 
-export type SuperbeUrl = "GOAL" | "STATISTICS" | "SETTINGS";
+export type SuperbeUrl = "goal" | "statistics" | "settings";
 
 export type SettingsDetail = "CATEGORY" | "MONEY" | "SCREEN";
 
-export const URL_MAP_LIST: SuperbeUrl[] = ["GOAL", "STATISTICS", "SETTINGS"];
+export const URL_MAP_LIST: SuperbeUrl[] = ["goal", "statistics", "settings"];
 
 export const URL_MAP: Record<SuperbeUrl, string> = {
-  GOAL: "goal",
-  STATISTICS: "statistics",
-  SETTINGS: "settings",
+  goal: "goal",
+  statistics: "statistics",
+  settings: "settings",
 };
 
 export const SETTINGS_DETAIL: Record<SettingsDetail, string> = {
@@ -27,15 +27,15 @@ export const URL_MAP_NAME: Record<
   SuperbeUrl,
   { name: string; icon: ReactNode }
 > = {
-  GOAL: {
+  goal: {
     name: "목표",
     icon: <PencilSquareIcon className="h-6 w-6 text-gray-500" />,
   },
-  STATISTICS: {
+  statistics: {
     name: "통계",
     icon: <ChartBarIcon className="h-6 w-6 text-gray-500" />,
   },
-  SETTINGS: {
+  settings: {
     name: "설정",
     icon: <UserCircleIcon className="h-6 w-6 text-gray-500" />,
   },
