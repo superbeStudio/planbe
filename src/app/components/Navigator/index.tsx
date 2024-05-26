@@ -18,7 +18,7 @@ export default function Navigator() {
         onChange={(event, _index) => {
           const target = URL_MAP_LIST[_index];
           console.log(URL_MAP[target]);
-          router.push(URL_MAP[target]);
+          router.push(`/${URL_MAP[target]}`);
         }}
       >
         {Object.entries(URL_MAP_NAME).map(([url, { name, icon }]) => (
