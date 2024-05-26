@@ -7,6 +7,8 @@ import {
 
 export type SuperbeUrl = "GOAL" | "STATISTICS" | "SETTINGS";
 
+export const URL_MAP_LIST: SuperbeUrl[] = ["GOAL", "STATISTICS", "SETTINGS"];
+
 export const URL_MAP: Record<SuperbeUrl, string> = {
   GOAL: "goal",
   STATISTICS: "statistics",

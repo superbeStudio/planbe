@@ -11,33 +11,28 @@ export default function Goal() {
       padding={2}
       gap={2}
     >
-      <Box
-        display="flex"
-        alignItems="center"
-        flexDirection="row"
-        gap={2}
-        width="100%"
-        flex={1}
-      >
-        <Card sx={{ display: "flex", flex: 1 }}>
+      <Box display="flex" alignItems="center" flexWrap="wrap" gap={2} flex={1}>
+        <Card sx={{ display: "flex", flex: 1, minWidth: 240 }}>
           <CardContent
             sx={{
-              alignItems: "center",
               display: "flex",
               justifyContent: "center",
+              alignItems: "center",
+              width: 240,
               flex: 1,
             }}
           >
             <Chart />
           </CardContent>
         </Card>
-        <Card sx={{ display: "flex", flex: 1 }}>
+        <Card sx={{ display: "flex", flex: 1, minWidth: 240 }}>
           <CardContent
             sx={{
-              alignItems: "center",
               display: "flex",
               justifyContent: "center",
+              alignItems: "center",
               flex: 1,
+              width: 240,
             }}
           >
             <Chart />

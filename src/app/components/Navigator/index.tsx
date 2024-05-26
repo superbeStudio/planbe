@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { URL_MAP_NAME } from "@/app/_lib/constant/url";
+import { URL_MAP, URL_MAP_LIST, URL_MAP_NAME } from "@/app/_lib/constant/url";
 import { BottomNavigation, BottomNavigationAction, Paper } from "@mui/material";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -15,9 +15,10 @@ export default function Navigator() {
     >
       <BottomNavigation
         showLabels
-        // value={value}
-        onChange={(event, newValue) => {
-          router.push(newValue);
+        onChange={(event, _index) => {
+          const target = URL_MAP_LIST[_index];
+          console.log(URL_MAP[target]);
+          router.push(URL_MAP[target]);
         }}
       >
         {Object.entries(URL_MAP_NAME).map(([url, { name, icon }]) => (

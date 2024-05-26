@@ -15,7 +15,7 @@ export default function GoalItem() {
     <Card sx={{ display: "flex", flex: 1, width: "100%" }}>
       <CardMedia
         component="img"
-        sx={{ width: 151 }}
+        sx={{ width: 120 }}
         image="/sample.png"
         alt="Live from space album cover"
       />
