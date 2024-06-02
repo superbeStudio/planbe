@@ -11,36 +11,41 @@ export default function Goal() {
       padding={2}
       gap={2}
     >
-      <Box display="flex" alignItems="center" flexWrap="wrap" gap={2} flex={1}>
-        <Card sx={{ display: "flex", flex: 1, minWidth: 240 }}>
-          <CardContent
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              width: 240,
-              flex: 1,
-            }}
-          >
-            <Chart />
-          </CardContent>
-        </Card>
-        <Card sx={{ display: "flex", flex: 1, minWidth: 240 }}>
-          <CardContent
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              flex: 1,
-              width: 240,
-            }}
-          >
-            <Chart />
-          </CardContent>
-        </Card>
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        flexWrap="wrap"
+        gap={2}
+        flex={1}
+      >
+        <CardContent
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minWidth: 240,
+            flex: 1,
+          }}
+        >
+          <Chart chartProps={{ fill: "#9cb5dd" }} />
+        </CardContent>
+        <CardContent
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flex: 1,
+            minWidth: 240,
+          }}
+        >
+          <Chart chartProps={{ fill: "#c1a2dd" }} />
+        </CardContent>
       </Box>
       <Box display="flex" width="100%" justifyContent="flex-end">
-        <Button>목표 생성</Button>
+        <Button>
+          <p>목표 생성</p>
+        </Button>
       </Box>
       <Box
         display="flex"
