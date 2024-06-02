@@ -6,6 +6,8 @@ import "./globals.css";
 import Navigator from "./components/Navigator";
 import Content from "./components/Content";
 import { createTheme, ThemeProvider } from "@mui/material";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useState } from "react";
 
 const NotoR = Noto_Sans_KR({
   weight: "400",
