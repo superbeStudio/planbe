@@ -1,8 +1,20 @@
+"use client";
+
 import { Box, Button, Card, CardContent, Fab } from "@mui/material";
 import Chart from "./_chart";
 import GoalItem from "./_list";
+import { useRouter } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
+import { API, QUERY_KEY } from "@/api";
 
 export default function Goal() {
+  const router = useRouter();
+
+  const { data } = useQuery({
+    queryKey: QUERY_KEY.GOAL.LIST(),
+    queryFn: API.GOAL.LIST,
+  });
+
   return (
     <Box
       display="flex"
@@ -43,7 +55,11 @@ export default function Goal() {
         </CardContent>
       </Box>
       <Box display="flex" width="100%" justifyContent="flex-end">
-        <Button>
+        <Button
+          onClick={() => {
+            router.push(`/goal/create`);
+          }}
+        >
           <p>목표 생성</p>
         </Button>
       </Box>
