@@ -1,8 +1,11 @@
 ﻿"use client";
 
-import { Pie, PieChart, ResponsiveContainer } from "recharts";
+import { Pie, PieProps, PieChart, ResponsiveContainer } from "recharts";
 
-export default function Chart() {
+type Props = {
+  chartProps?: Pick<PieProps, "fill">;
+};
+export default function Chart({ chartProps }: Props) {
   return (
     <ResponsiveContainer width="100%" height={160}>
       <PieChart>
@@ -12,9 +15,9 @@ export default function Chart() {
           cy="50%"
           innerRadius={60}
           outerRadius={80}
-          fill="#8884d8"
           renderingIntent={"test"}
           dataKey="value"
+          {...chartProps}
         />
       </PieChart>
     </ResponsiveContainer>
