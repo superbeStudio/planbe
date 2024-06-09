@@ -22,7 +22,7 @@ export default function Content({
         className={`${isDarkMode ? "dark" : ""}`}
         display="flex"
         flex={1}
-        minHeight="100%"
+        minHeight="calc(100vh - 56px)" // bottom navigator 높이 빼주기
         width="100%"
       >
         <Box

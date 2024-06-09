@@ -5,7 +5,7 @@ import { z } from "zod";
 import { useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Gender, SystemCurrency, SystemColor } from "@/app/_lib/types/user.d";
+import { Gender, SystemCurrency, SystemColor } from "@/app/_lib/@types/user.d";
 import {
   Button,
   TextField,
