@@ -1,13 +1,11 @@
 "use client";
 
-import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import Navigator from "./components/Navigator";
 import Content from "./components/Content";
 import { createTheme, ThemeProvider } from "@mui/material";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useState } from "react";
+import { Suspense } from "react";
 
 const NotoR = Noto_Sans_KR({
   weight: "400",
@@ -32,7 +30,9 @@ export default function RootLayout({
       </head>
       <body className={NotoR.className}>
         <ThemeProvider theme={theme}>
-          <Content>{children}</Content>
+          <Content>
+            <Suspense>{children}</Suspense>
+          </Content>
           <Navigator />
         </ThemeProvider>
       </body>
