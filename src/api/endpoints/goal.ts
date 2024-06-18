@@ -10,7 +10,7 @@ export const GOAL_QUERY_KEY = {
 
 export const getGoalList = async () => {
   const url = `/api/goal`;
-  const { data } = await api.get<APIData<GoalList>>(url);
+  const { data } = await api.get<APIData<GoalList[]>>(url);
   return data;
 };
 
@@ -22,4 +22,5 @@ export const createGoalList = async (params: CreateGoalBody) => {
 
 export const GOAL = {
   LIST: getGoalList,
+  CREATE: createGoalList,
 };

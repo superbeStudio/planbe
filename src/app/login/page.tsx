@@ -34,9 +34,16 @@ export default function Page() {
         Accept: "application/json",
       },
       body: JSON.stringify(values),
-    }).then((res) => {
-      router.push("/goal");
-    });
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        console.log(res);
+        if (res.data) {
+          localStorage.setItem("login-token", res.data.token.accessToken);
+        }
+
+        router.push("/goal");
+      });
   };
 
   return (

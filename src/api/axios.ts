@@ -1,4 +1,5 @@
-import axios from "axios";
+import { getApiTokenFromCookie } from "@/app/_lib/utils/cookie.util";
+import axios, { AxiosError } from "axios";
 
 const api = axios.create({
   timeout: 3 * 60 * 1000, // 3 minutes
@@ -6,6 +7,7 @@ const api = axios.create({
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
+    Authorization: `Bearer ${localStorage.getItem("login-token")}`,
   },
 });
 
