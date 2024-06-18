@@ -10,7 +10,6 @@ export default function Navigator() {
   const pathname = usePathname();
   const currentPath = pathname.split("/")[1];
 
-  console.log(currentPath);
   return (
     <Paper
       sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}

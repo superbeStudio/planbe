@@ -62,15 +62,18 @@ export default function Goal() {
         alignItems="center"
         width="100%"
         flex={1}
-        rowGap={0.2}
+        rowGap={1}
         flexDirection="column"
       >
-        <GoalItem />
-        <GoalItem />
-        <GoalItem />
-        <GoalItem />
-        <GoalItem />
-        <GoalItem />
+        {data?.data && data?.data.length > 0 ? (
+          data?.data.map((goalInfo) => {
+            return (
+              <GoalItem goalInfo={goalInfo} key={goalInfo.createDatetime} />
+            );
+          })
+        ) : (
+          <p>등록된 목표가 없습니다.</p>
+        )}
       </Box>
     </Box>
   );

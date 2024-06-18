@@ -1,6 +1,6 @@
 "use client";
 
-import { API } from "@/api";
+import { API, QUERY_KEY } from "@/api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Box,
@@ -13,16 +13,18 @@ import {
   Typography,
   styled,
 } from "@mui/material";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const createGoalFormSchema = z.object({
   goalName: z.string(),
-  categorySequence: z.number(),
-  goalAmount: z.number(),
+  categorySequence: z.string(),
+  goalAmount: z.string(),
   priority: z.number(),
-  goalTime: z.string(),
+  goalTime: z.string().optional(),
   goalUrl: z.string().optional(),
 });
 
@@ -30,6 +32,8 @@ type CreateGoalForm = z.infer<typeof createGoalFormSchema>;
 
 export default function Create() {
   const priorityRankOptions = [1, 2, 3, 4, 5];
+  const [goalOptions, setGoalOptions] = useState<string[]>([]);
+  const router = useRouter();
 
   const {
     watch,
@@ -40,13 +44,41 @@ export default function Create() {
     resolver: zodResolver(createGoalFormSchema),
   });
 
-  const { mutateAsync: createGoal } = useMutation({
-    mutationFn: API.GOAL.LIST,
+  const { data: goalData } = useQuery({
+    queryKey: QUERY_KEY.CATEGORY.GOAL_LIST(),
+    queryFn: API.CATEGORY.GOAL_LIST,
   });
 
-  const createGoalInfo = () => {
-    createGoal();
+  const { mutateAsync: createGoal } = useMutation({
+    mutationFn: API.GOAL.CREATE,
+    onSuccess: () => {
+      alert("목표가 생성되었습니다.");
+      router.push("/goal");
+    },
+  });
+
+  const createGoalInfo = (info: CreateGoalForm) => {
+    const { categorySequence, goalAmount, priority, ...rest } = info;
+
+    const catSequence = goalData?.data.find(
+      (data) => data.categoryName === categorySequence
+    )?.categorySequence;
+
+    createGoal({
+      categorySequence: Number(catSequence),
+      goalAmount: Number(goalAmount),
+      priority: Number(priority),
+      goalTime: "2024-01-01",
+      ...rest,
+    });
   };
+
+  useEffect(() => {
+    if (goalData) {
+      const options = goalData.data.map((data) => data.categoryName);
+      setGoalOptions(options);
+    }
+  }, [goalData]);
 
   return (
     <Box
@@ -77,10 +109,15 @@ export default function Create() {
           </FormControl>
           <FormControl variant="standard">
             <InputLabel>목표 카테고리</InputLabel>
-            <Input
-              placeholder="목표 카테고리"
-              {...register("categorySequence")}
-            />
+            <Select {...register("categorySequence")}>
+              {goalOptions.map((option) => {
+                return (
+                  <MenuItem key={option} value={option}>
+                    {option}
+                  </MenuItem>
+                );
+              })}
+            </Select>
           </FormControl>
           <FormControl variant="standard">
             <InputLabel>목표금액</InputLabel>
@@ -115,7 +152,7 @@ export default function Create() {
           </FormControl>
         </Box>
       </Box>
-      <Button variant="contained" onClick={() => alert("연동예정")}>
+      <Button variant="contained" onClick={handleSubmit(createGoalInfo)}>
         설정
       </Button>
     </Box>

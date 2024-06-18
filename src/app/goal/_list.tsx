@@ -6,9 +6,28 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
+import { GoalList } from "../_lib/@types/goal";
+import { formatStrPrice } from "../_lib/utils/price.util";
 
-export default function GoalItem() {
+type Props = {
+  goalInfo: GoalList;
+};
+
+export default function GoalItem({ goalInfo }: Props) {
   const theme = useTheme();
+
+  const {
+    categoryName,
+    categorySequence,
+    createDatetime,
+    goalAmount,
+    goalName,
+    goalSequence,
+    goalTime,
+    goalUrl,
+    priority,
+    updateDatetime,
+  } = goalInfo;
 
   return (
     <Card sx={{ display: "flex", flex: 1, width: "100%" }}>
@@ -20,10 +39,11 @@ export default function GoalItem() {
       />
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <CardContent sx={{ flex: "1 0 auto" }}>
-          <h2 className="text-base">목표이름들어갈자리</h2>
-          <h5 className="text-sm">목표금액들어갈자리</h5>
-          <h6 className="text-xs">월필요저축</h6>
-          <h6 className="text-xs">목표달성률</h6>
+          <h2 className="text-base">{goalName}</h2>
+          <h5 className="text-sm">{`<${categoryName}>`}</h5>
+          <h5 className="text-sm">{formatStrPrice(goalAmount)}원</h5>
+          <h6 className="text-xs">{goalTime}</h6>
+          <h6 className="text-xs">{createDatetime.slice(0, 10)}</h6>
         </CardContent>
       </Box>
     </Card>

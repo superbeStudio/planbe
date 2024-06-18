@@ -48,14 +48,13 @@ export default function Page() {
   });
 
   const handleRegister = (values: RegisterForm) => {
-    console.log(values);
-    fetch("https://planbe-backend.p-e.kr/api/user", {
+    fetch("https://planbe-backend.p-e.kr/api/user/join", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify(values),
+      body: JSON.stringify({ birth: "1995-12-12", ...values }),
     }).then(() => {
       router.push("/login");
     });
