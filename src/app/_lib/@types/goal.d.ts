@@ -17,5 +17,5 @@ export type CreateGoalBody = {
   goalAmount: number;
   priority: number;
   goalTime: string;
-  goalUrl: string;
+  goalUrl?: string;
 };
